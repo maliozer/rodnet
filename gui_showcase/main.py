@@ -25,16 +25,17 @@ def change(image_new):
 def open():
     global predicted_image
     gui.filename = filedialog.askopenfilename(initialdir="/", title="Select a File", filetypes=(("png files", "*.png"),("all files", "*.*")))
-    
+ 
     if(gui.filename):
         global image2
         print(gui.filename) #image path on local pc
         #call predictor with (gui.filename)
         image2_open = Image.open(gui.filename)
-        w = int(image2_open.width * 0.5)
-        h = int(image2_open.height * 0.5)
-        print(w,h)
-        image2_open = image2_open.resize((w,h), Image.ANTIALIAS)
+
+        if(image2_open.width > 800):
+            w = int(image2_open.width * 0.5)
+            h = int(image2_open.height * 0.5)
+            image2_open = image2_open.resize((w,h), Image.ANTIALIAS)
 
         image2 = ImageTk.PhotoImage(image2_open)
         
@@ -46,7 +47,8 @@ def open():
 
 
 image_showcase = PhotoImage(file="./images/rodnet_logo.png")
-image_id = canvas.create_image(0, 0, anchor='nw', image=image_showcase)
+
+image_id = canvas.create_image(0, 10, anchor='nw', image=image_showcase)
 
 
 open_label = Label(gui, text="Select the image: ").pack()
