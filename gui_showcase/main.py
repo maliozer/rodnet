@@ -12,7 +12,7 @@ inzva_logo = ImageTk.PhotoImage(logo_image_path)
 inzva_logo_label = Label(image=inzva_logo).pack()
 
 #window size
-canvas = Canvas(gui, width=800, height=600)
+canvas = Canvas(gui, width=800, height=500)
 canvas.pack()
 
 #title
@@ -20,6 +20,7 @@ rodnet_label = Label(gui, text="RODNET Robust Object Detection Beta Showcase: ",
 
 def change(image_new):
     canvas.itemconfig(image_id, image=image_new)
+    
 
 def open():
     global predicted_image
@@ -46,7 +47,6 @@ def open():
 
 image_showcase = PhotoImage(file="./images/rodnet_logo.png")
 image_id = canvas.create_image(0, 0, anchor='nw', image=image_showcase)
-
 
 
 open_label = Label(gui, text="Select the image: ").pack()
