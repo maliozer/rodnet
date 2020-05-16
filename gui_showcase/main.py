@@ -47,7 +47,7 @@ def open():
 
 
 image_showcase = PhotoImage(file="./images/rodnet_logo.png")
-
+#offset = [int((800 - image_showcase.width()) /2)]
 image_id = canvas.create_image(0, 10, anchor='nw', image=image_showcase)
 
 
